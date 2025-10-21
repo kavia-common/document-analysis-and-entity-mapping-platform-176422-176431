@@ -1,12 +1,19 @@
-import '@testing-library/jest-dom';
-import { server } from './__mocks__/server';
+//
+// Global test setup for CRA + Jest
+// IMPORTANT: Polyfills must be loaded BEFORE MSW server setup.
+// Using CommonJS require here to avoid ESM import hoisting issues.
+//
 
-// Establish API mocking before all tests.
+// Load polyfills first
+require('./jest.setup');
+
+// Fetch and jest-dom (assertions) next
+require('whatwg-fetch');
+require('@testing-library/jest-dom');
+
+// Finally set up MSW server lifecycle hooks
+const { server } = require('./__mocks__/server');
+
 beforeAll(() => server.listen());
-
-// Reset any request handlers that are declared as a part of our tests
-// (i.e. for testing one-time error scenarios).
 afterEach(() => server.resetHandlers());
-
-// Clean up after the tests are finished.
 afterAll(() => server.close());
