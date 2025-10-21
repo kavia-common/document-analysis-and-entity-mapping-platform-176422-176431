@@ -1,68 +1,82 @@
-# Frontend App (React) — Document Analyzer MVP
+# Lightweight React Template for KAVIA
 
-## Overview
-This is a lightweight React frontend for uploading documents, sending them to the backend for parsing, and downloading a generated Excel report. The UI supports drag-and-drop uploads, progress indication, and an “Export to Excel” action. The app is designed to connect to a FastAPI backend running on port 3001.
+This project provides a minimal React template with a clean, modern UI and minimal dependencies.
 
-## Quick Start
-Prerequisites:
-- Node.js 16+ and npm
-- Backend API running on http://localhost:3001 (see backend README)
+## Features
 
-Install dependencies and run:
-```bash
-npm install
-npm start
+- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
+- **Modern UI**: Clean, responsive design with KAVIA brand styling
+- **Fast**: Minimal dependencies for quick loading times
+- **Simple**: Easy to understand and modify
+
+## Getting Started
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### `npm test`
+
+Launches the test runner in interactive watch mode.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+## Customization
+
+### Colors
+
+The main brand colors are defined as CSS variables in `src/App.css`:
+
+```css
+:root {
+  --kavia-orange: #E87A41;
+  --kavia-dark: #1A1A1A;
+  --text-color: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
 ```
-The app will be available at:
-- Local: http://localhost:3000
 
-## Running via Preview System
-If you are using the Kavia preview environment:
-- Frontend preview URL: provided by the preview system, typically on port 3000
-- Backend preview URL: ensure the backend is running on port 3001
+### Components
 
-This frontend auto-derives the backend URL by using the current hostname with port 3001. You can override it via the `REACT_APP_API_BASE_URL` env variable.
+This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
 
-- Default: derived from window.location (hostname + :3001)
-- Override: set `REACT_APP_API_BASE_URL` in a `.env` file or environment before `npm start`.
+Common components include:
+- Buttons (`.btn`, `.btn-large`)
+- Container (`.container`)
+- Navigation (`.navbar`)
+- Typography (`.title`, `.subtitle`, `.description`)
 
-See `src/api/client.js` and `.env.example` for details.
+## Learn More
 
-## Environment Variables (if any)
-No `.env` file is required for the frontend in this MVP. The backend API base URL is currently hardcoded as:
-- File: `src/api/client.js`
-- Value: `const BASE_URL = 'http://localhost:3001';`
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-If you need to point to a different backend URL in a preview or remote environment, modify `src/api/client.js` and rebuild or restart the app.
+### Code Splitting
 
-## How to Use
-1. Open http://localhost:3000 in your browser.
-2. Drag-and-drop files into the upload area or click “Browse Files” to select them.
-3. Supported file types: PDF, DOCX, PPTX, XLSX, CSV.
-4. Click “Generate Excel”.
-5. Wait for processing to complete. The Excel download starts automatically.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-## Supported File Types
-- pdf
-- docx
-- pptx
-- xlsx
-- csv
+### Analyzing the Bundle Size
 
-Images are not supported for text extraction in this MVP. They will be marked as unsupported.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-## Troubleshooting
-- Download not starting:
-  - Check your browser’s download/pop-up permissions.
-- Network error:
-  - Verify the backend is running and accessible at http://localhost:3001.
-  - Confirm CORS is allowed from http://localhost:3000 (default backend setting allows this).
-- Unsupported file:
-  - Ensure the file is one of the supported types (PDF/DOCX/PPTX/XLSX/CSV).
-- Large file issues:
-  - Files larger than the backend’s limit (default 25 MB) will be rejected.
+### Making a Progressive Web App
 
-## Notes and Next Steps
-- This MVP does not use a database.
-- The backend generates Excel on the fly and streams it back.
-- Consider externalizing the API base URL into environment variables for different deployment environments.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
