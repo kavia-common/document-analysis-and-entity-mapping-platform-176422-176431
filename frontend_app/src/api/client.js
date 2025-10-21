@@ -1,4 +1,23 @@
-const BASE_URL = 'http://localhost:3001';
+/**
+ * Determine API base URL:
+ * 1) Use REACT_APP_API_BASE_URL if provided.
+ * 2) Otherwise, derive from current origin by swapping the port to 3001 (keeps protocol and hostname).
+ *    This supports both localhost and preview environments automatically.
+ */
+const ENV_BASE = process.env.REACT_APP_API_BASE_URL;
+let derivedBase = '';
+try {
+  if (typeof window !== 'undefined' && window.location) {
+    const url = new URL(window.location.href);
+    // Default backend port is 3001; if already 3001, keep as-is
+    const backendPort = '3001';
+    url.port = backendPort;
+    derivedBase = `${url.protocol}//${url.hostname}:${backendPort}`;
+  }
+} catch {
+  // no-op: stay with fallback when window/URL not available (SSR/tests)
+}
+const BASE_URL = ENV_BASE || derivedBase || 'http://localhost:3001';
 
 // PUBLIC_INTERFACE
 export async function exportFiles(files) {

@@ -21,7 +21,12 @@ If you are using the Kavia preview environment:
 - Frontend preview URL: provided by the preview system, typically on port 3000
 - Backend preview URL: ensure the backend is running on port 3001
 
-This frontend expects the backend at http://localhost:3001 by default (see src/api/client.js). If the preview system exposes a different backend URL, update the base URL accordingly.
+This frontend auto-derives the backend URL by using the current hostname with port 3001. You can override it via the `REACT_APP_API_BASE_URL` env variable.
+
+- Default: derived from window.location (hostname + :3001)
+- Override: set `REACT_APP_API_BASE_URL` in a `.env` file or environment before `npm start`.
+
+See `src/api/client.js` and `.env.example` for details.
 
 ## Environment Variables (if any)
 No `.env` file is required for the frontend in this MVP. The backend API base URL is currently hardcoded as:
